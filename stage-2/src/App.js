@@ -5,7 +5,7 @@ import ShoppingCart from "./Components/ShoppingCart/ShoppingCart";
 import NavBar from "./Components/NavBar/NavBar";
 
 class App extends Component {
-  constuctor(props) {
+  constructor(props) {
     super(props);
     this.state = {
       products: [],
@@ -21,7 +21,7 @@ class App extends Component {
       .get("https://practiceapi.devmountain.com/products/")
       .then(response => {
         this.setState({
-          products: response
+          products: response.data
         });
       });
   }
@@ -50,6 +50,7 @@ class App extends Component {
   }
   render() {
     const { products, cart, showCart } = this.state;
+    console.log(this.state.products)
     return (
       <div className="App">
         <NavBar navigate={this.navigate} />
